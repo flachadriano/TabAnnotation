@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.example.client;
 
+import br.example.client.injector.TabGinjector;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.core.client.GWT;
 
 /**
  * Main entry point.
@@ -19,6 +11,8 @@ import com.google.gwt.event.dom.client.ClickHandler;
  */
 public class TabAnnotationEntryPoint implements EntryPoint {
 
+    private static final TabGinjector tabGinjector = GWT.create(TabGinjector.class);
+    
     /**
      * Creates a new instance of TabAnnotationEntryPoint
      */
@@ -29,17 +23,8 @@ public class TabAnnotationEntryPoint implements EntryPoint {
      * The entry point method, called automatically by loading a module that
      * declares an implementing class as an entry-point
      */
+    @Override
     public void onModuleLoad() {
-        final Label label = new Label("Hello, GWT!!!");
-        final Button button = new Button("Click me!");
-        
-        button.addClickHandler(new ClickHandler() {
-            public void onClick(ClickEvent event) {
-                label.setVisible(!label.isVisible());
-            }
-        });
-        
-        RootPanel.get().add(button);
-        RootPanel.get().add(label);
+        tabGinjector.getPlaceManager().revealDefaultPlace();
     }
 }

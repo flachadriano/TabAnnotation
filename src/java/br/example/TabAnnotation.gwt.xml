@@ -4,15 +4,11 @@
 
 <module>
     <inherits name="com.google.gwt.user.User"/>
-
-    <!-- Inherit the default GWT style sheet. You can change -->
-    <!-- the theme of your GWT application by uncommenting -->
-    <!-- any one of the following lines. -->
-    <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
-    <!-- <inherits name="com.google.gwt.user.theme.chrome.Chrome"/> -->
-    <!-- <inherits name="com.google.gwt.user.theme.dark.Dark"/> -->
+    <inherits name="com.google.gwt.inject.Inject"/>
+    <inherits name='com.gwtplatform.mvp.Mvp' />
 
     <entry-point class="br.example.client.TabAnnotationEntryPoint"/>
 
-    <!-- Do not define servlets here, use web.xml -->
+    <set-configuration-property name="gin.ginjector" value="br.example.client.injector.TabGinjector"/> 
+    <set-configuration-property name="verifyNewerVersion" value="false"/> 
 </module>
